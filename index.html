@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #ffe6f0;
+      margin-top: 120px;
+    }
+
+    h1 {
+      color: #d63384;
+      margin-bottom: 40px;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 12px 28px;
+      margin: 15px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #6c757d;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Will you be my Valentine, Vivaan? 💖</h1>
+
+  <button id="yesBtn">Yes 😍</button>
+  <button id="noBtn">No 🙈</button>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+
+    let fontSize = 20;
+    let paddingX = 28;
+    let paddingY = 12;
+
+    noBtn.addEventListener("mouseover", () => {
+      if (fontSize > 8) {   // stop shrinking after it gets tiny
+        fontSize -= 2;
+        paddingX -= 4;
+        paddingY -= 2;
+
+        noBtn.style.fontSize = fontSize + "px";
+        noBtn.style.padding = paddingY + "px " + paddingX + "px";
+      } else {
+        noBtn.innerText = "Too late 😜";
+      }
+    });
+
+    yesBtn.addEventListener("click", () => {
+      document.body.innerHTML = `
+        <h1 style="color:#d63384; margin-top:120px;">
+          YAY 💖 I knew it! Happy Valentine’s 🥰
+        </h1>
+      `;
+    });
+  </script>
+
+</body>
+</html>
