@@ -2,38 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Be My Valentine?</title>
+  <title>For Vivaan 💖</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
       background-color: #ffe6f0;
-      margin-top: 120px;
+      text-align: center;
+      overflow: hidden;
+      height: 100vh;
+      margin: 0;
     }
 
     h1 {
       color: #d63384;
-      margin-bottom: 40px;
+      margin-top: 80px;
     }
 
     button {
       font-size: 20px;
       padding: 12px 28px;
-      margin: 15px;
       border-radius: 10px;
       border: none;
       cursor: pointer;
+      position: absolute;
       transition: all 0.2s ease;
     }
 
     #yesBtn {
       background-color: #ff4d6d;
       color: white;
+      left: 45%;
+      top: 50%;
     }
 
     #noBtn {
       background-color: #6c757d;
       color: white;
+      left: 45%;
+      top: 60%;
     }
   </style>
 </head>
@@ -46,29 +52,38 @@
 
   <script>
     const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
 
-    let fontSize = 20;
-    let paddingX = 28;
-    let paddingY = 12;
+    function moveButton() {
+      const maxX = window.innerWidth - yesBtn.offsetWidth;
+      const maxY = window.innerHeight - yesBtn.offsetHeight;
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
 
-    noBtn.addEventListener("mouseover", () => {
-      if (fontSize > 8) {   // stop shrinking after it gets tiny
-        fontSize -= 2;
-        paddingX -= 4;
-        paddingY -= 2;
+      yesBtn.style.left = randomX + "px";
+      yesBtn.style.top = randomY + "px";
+    }
 
-        noBtn.style.fontSize = fontSize + "px";
-        noBtn.style.padding = paddingY + "px " + paddingX + "px";
-      } else {
-        noBtn.innerText = "Too late 😜";
-      }
-    });
+    // YES button runs away when hovered
+    yesBtn.addEventListener("mouseover", moveButton);
 
+    // If he FINALLY clicks it
     yesBtn.addEventListener("click", () => {
       document.body.innerHTML = `
-        <h1 style="color:#d63384; margin-top:120px;">
-          YAY 💖 I knew it! Happy Valentine’s 🥰
+        <h1 style="margin-top:120px; color:#d63384;">
+          Well done baby 😌💖  
+          I knew you'd catch me…  
+          But I was already your Valentine ❤️
+        </h1>
+      `;
+    });
+
+    // Optional: No button gives instant result
+    document.getElementById("noBtn").addEventListener("click", () => {
+      document.body.innerHTML = `
+        <h1 style="margin-top:120px; color:#d63384;">
+          Nice try 😏  
+          You were never getting out of this.  
+          I'm your Valentine 💘
         </h1>
       `;
     });
